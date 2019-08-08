@@ -6,12 +6,29 @@ function displayTiles(beers) {
     // build html with filted data
     $(".tiles").html("")
     let beerHtml = beers.map(beer => {
+        console.log(beer.ingredients);
         return `
         <div class = 'tile'>
-            <img class="beer-img" src = "${beer.image_url}">
-            <div class="beer-name">${beer.name}</div>
-        </div>
-       
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h3 class="beer-name">${beer.name}</h3>
+                                <div class="beer-img-container">
+                                    <img class="beer-img" src = "${beer.image_url}">
+                                </div>
+                            
+                                <p>${beer.ingredients.yeast}</p>
+                                <p class ="beer__tagline">${beer.tagline}</p>
+                            </div>
+                            
+                            <div class="flip-card-back">
+                                <h1>Ingredients:</h1>
+                                
+                                <p>ciunwiuvn8ewunf9u</p>
+                            </div>
+                </div>
+            </div>
+       </div>
             `
     });
     
