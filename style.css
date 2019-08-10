@@ -24,6 +24,7 @@ html {
   }
   
   .search-form {
+    /* width: 450px; */
     max-width: 450px;
     margin: 30px auto;
     /* I change the position of the search form so it overlaps tiles with beers */
@@ -104,6 +105,7 @@ html {
     width: 100%;
     min-height: 100vh;
     margin: auto;
+    text-align: center;
     
 }
 
@@ -120,8 +122,12 @@ html {
     /* display: flex; */
     /* grid template */
     display: grid;
+    justify-items: center;
+    /* justify-content: space-evenly; */
+    justify-content: center;
     /* add minmax so the zooming works corettly */
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(4, 500px); 
     grid-auto-rows: 500px;
     grid-column-gap: 10px;
@@ -133,13 +139,42 @@ html {
     justify-content: flex-start;
     justify-content: flex-start; */
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    /* border: 1px solid red; */
+    
+}
+
+@media only screen and (max-width: 920px) {
+  .tiles {
+    padding: 100px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 814px) {
+  .tiles {
+    padding: 20px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 596px) {
+  .tiles {
+    padding: 40px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .search-form {
+    max-width: 300px;
+  }
+  .suggestions li {
+    padding-bottom: 10px;
+  }
 }
 
 .tile {
     /* background: rgba(0, 0, 0, 0.19); */
     /* flex: 1 1 33.33%; */
-    min-width: 250px;
+    /* min-width: 250px; */
     /* max-width: 33.33%; */
     width: 100%;
     height: 100%;
@@ -150,11 +185,11 @@ html {
 
 }
 
-@media only screen and (max-width: 300px) {
+/* @media only screen and (max-width: 300px) {
     .tile {
         min-width: 50%;
     }
-  }
+  } */
 
   .beer-img {
     display: block;
