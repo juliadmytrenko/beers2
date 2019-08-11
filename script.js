@@ -7,7 +7,7 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
 
 
     $.getJSON(endpoint, function(data) {
-        // console.log(data);
+        console.log(data);
 
         function displayTiles(beers) {
             // build html with filted data
@@ -46,6 +46,7 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
                                         <div class="beer-img-container">
                                             <img class="beer-img" src = "${beer.image_url}">
                                         </div>
+                                        <div class="percent"><p>abv: </p><p>${beer.abv}<i class="fa fa-percent"></i></p></div>
                                     
                                         <p>${beer.ingredients.yeast}</p>
                                         <p class ="beer__tagline">${beer.tagline}</p>

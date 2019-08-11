@@ -260,9 +260,45 @@ html {
     border-radius: 10px;
     padding: 20px 4px;
     color: black;
+    /* border: 1px solid red; */
 
   }
-  
+
+  .percent {
+    position: absolute;
+
+    max-height: 100px;
+    /* height: auto; */
+    /* height: 100px; */
+    max-width: 100px;
+    width: 100px;
+    height: 100px;
+    /* width: auto; */
+    display: block;
+    font-size: 24px;
+    /* line-height: 46px; */
+    /* z-index: 1; */
+    top: 90px;
+    right: 24px;
+    /* border: 1px solid green; */
+    background: white;
+    border-radius: 100px;
+    /* align-items: center; */
+    padding: 10px;
+    padding-top: 16px;
+  }
+  .percent p {
+    margin: 0;
+    /* display: inline; */
+    backface-visibility: hidden;
+    transform: rotate(-10deg); 
+    text-align: center;
+    /* display: inline-block; */
+    /* border: 1px solid purple; */
+  }
+  .percent p {
+    font-weight: 900;
+  }
 
   /* Style the back side */
   .flip-card-back {
