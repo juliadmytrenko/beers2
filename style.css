@@ -83,13 +83,13 @@ html {
     background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
   }
 
-  .suggestions li:nth-child(even):hover {
+  /* .suggestions li:nth-child(even):hover {
     background: linear-gradient(to top,  #ffffff 0%,rgb(177, 175, 175) 100%);
   }
   
   .suggestions li:nth-child(odd):hover {
     background: linear-gradient(to top,  #ffffff 0%,rgb(182, 182, 182) 100%);
-  }
+  } */
   
   span.population {
     font-size: 15px;
@@ -128,8 +128,8 @@ html {
     /* add minmax so the zooming works corettly */
     /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(4, 500px); 
-    grid-auto-rows: 500px;
+    grid-template-rows: repeat(4, 520px); 
+    grid-auto-rows: 520px;
     grid-column-gap: 10px;
     grid-row-gap: 15px;
 
@@ -144,6 +144,7 @@ html {
     
 }
 
+ /* media queries so it looks a bit better on mobile devices */
 @media only screen and (max-width: 920px) {
   .tiles {
     padding: 100px;
@@ -170,6 +171,16 @@ html {
     padding-bottom: 10px;
   }
 }
+@media only screen and (max-width: 400px) {
+  .search-form {
+    /* transform: scale(0.8); */
+    max-width: 250px;
+  }
+  .suggestions li {
+    padding-bottom: 10px;
+  }
+}
+
 
 .tile {
     /* background: rgba(0, 0, 0, 0.19); */
@@ -181,6 +192,7 @@ html {
     /* padding-top: 40%; */
     /* min-height: 200px; */
     border-radius: 10px;
+    /* border-radius: 50px; */
     padding: 5px;
 
 }
@@ -306,9 +318,10 @@ html {
     color: white;
     transform: rotateY(180deg);
     text-align: left;
-    padding: 20px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
+    padding-top: 4px;
+    padding-bottom: 0px;
     overflow-y: auto;
   }
 
@@ -328,7 +341,9 @@ html {
 }
 .flip-card-back h2
 {
+    margin-right: 0;
     text-align: center;
+    margin-bottom: 12px;
 }
 .flip-card-front h2
 {
@@ -352,16 +367,41 @@ html {
 }
 
 .food-pairing {
-  border: 1px solid rgba(0, 0, 0, 0.4);;
+  /* border: 1px solid rgba(0, 0, 0, 0.4);; */
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.12);
-  margin-top: 25px;
+  margin-top: 24px;
   margin-bottom: 16px;
   text-align: center;
+  padding: 10px 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
 }
 .food-pairing ul{
   text-align: left;
   margin-top: 10px;
+  padding-left: 30px;
+  /* padding-bottom: 0px; */
+
+}
+.food-pairing li{
+  text-align: left;
+  margin-top: 5px;
+}
+.food-pairing h2{
+  margin-top: 8px;
+}
+
+.beer__tagline {
+  font-weight: 510;
+  font-style: italic;
 
 }
 
+.strong-beer {
+  color: red;
+}
+.very-strong-beer {
+  color: red;
+  font-size: 35px;
+}

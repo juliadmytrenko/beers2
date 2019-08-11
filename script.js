@@ -1,11 +1,6 @@
 const endpoint = 'https://api.punkapi.com/v2/beers?';
 
 
-
-
-
-
-
     $.getJSON(endpoint, function(data) {
         console.log(data);
 
@@ -28,6 +23,16 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
                 }).join("");
         
                 const uniqHops = [...new Set(hopsTable)];
+
+                let beerAbv = beer.abv;
+                if (beer.abv >= 7.5) {
+                    beerAbv = `<span class="strong-beer">${beer.abv}</span>`;
+                }
+                if (beer.abv >= 20) {
+                    beerAbv = `<span class="very-strong-beer">${beer.abv}</span>`;
+                }
+                
+                
         
         //         const hop = uniqHops.map(hop => {
         //             return `<li class="hop-name">${hop}</li>
@@ -44,15 +49,15 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
                                     <div class="flip-card-front">
                                         <h2 class="beer-name">${beer.name}</h2>
                                         <div class="beer-img-container">
-                                            <img class="beer-img" src = "${beer.image_url}">
+                                            <img class="beer-img" src = "${beer.image_url}" onerror="this.onerror=null; this.src='not-found.png'">
                                         </div>
-                                        <div class="percent"><p>abv: </p><p>${beer.abv}<i class="fa fa-percent"></i></p></div>
+                                        <div class="percent"><p>abv: </p><p>${beerAbv}<i class="fa fa-percent"></i></p></div>
                                     
                                         <p>${beer.ingredients.yeast}</p>
                                         <p class ="beer__tagline">${beer.tagline}</p>
                                     </div>
                                     
-                                    <div class="mCustomScrollbar flip-card-back" >
+                                    <div class="flip-card-back" data-simplebar>
                                         <h2>Ingredients</h2>
                                         <h3>Hops: </h3><p>${uniqHops.join(", ")}</p>
                                         </br>
@@ -62,9 +67,6 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
                                         <div class="food-pairing"><h2>Food Pairing: </h2>
                                             <ul>
                                                 ${foodPairings}
-                                                <li>asfasfasf</li>
-                                                <li>safas</li>
-                                                <li>asfasa</li>
                                                 
                                             </ul>
                                         </div>
