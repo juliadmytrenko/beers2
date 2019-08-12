@@ -4,12 +4,17 @@
 /* some basic styling */
 html {
     box-sizing: border-box;
-    /* background: #ffc600; */
+    background: #ffc600;
     font-family: monospace;
     font-size: 20px;
     font-weight: 200;
-    background: #ffc600;
-
+    background: url("img-noise-361x370.png");
+    /* background-color: #DFDBE5; */
+    background-color: #ffc600;
+    background-color: #2e000f;
+    /* background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png"); */
+    background: url("Melamine-wood-002.png");
+    /* background: url("wood-texture-2000x1333.jpg") */
   }
 
   *, *:before, *:after {
@@ -127,14 +132,15 @@ html {
     justify-content: center;
     /* add minmax so the zooming works corettly */
     /* grid-template-columns: repeat(3, 1fr); */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(4, 520px); 
-    grid-auto-rows: 520px;
+    grid-template-columns: repeat(auto-fill, minmax(314px, 1fr));
+    grid-template-rows: repeat(4, 550px); 
+    grid-auto-rows: 550px;
     grid-column-gap: 10px;
     grid-row-gap: 15px;
 
     /* end of grid */
-    padding: 150px;
+    padding: 120px;
+    padding-top: 150px;
     /* flex-wrap: wrap;
     justify-content: flex-start;
     justify-content: flex-start; */
@@ -151,13 +157,16 @@ html {
     padding-top: 150px;
   }
 }
-@media only screen and (max-width: 814px) {
+@media only screen and (max-width: 860px) {
   .tiles {
-    padding: 20px;
+    padding: 40px;
     padding-top: 150px;
   }
 }
 @media only screen and (max-width: 596px) {
+  .search-form {
+    max-width: 350px;
+  }
   .tiles {
     padding: 40px;
     padding-top: 150px;
@@ -165,7 +174,7 @@ html {
 }
 @media only screen and (max-width: 450px) {
   .search-form {
-    max-width: 300px;
+    max-width: 280px;
   }
   .suggestions li {
     padding-bottom: 10px;
@@ -178,6 +187,25 @@ html {
   }
   .suggestions li {
     padding-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .tiles{
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr;
+  }
+  input {
+    /* transform: scaleY(0.8); */
+    padding: 10px;
+  }
+  .suggestions li {
+    padding: 14px;
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .tiles{
+    grid-template-columns: minmax(300px, 1fr);
   }
 }
 
@@ -251,12 +279,40 @@ html {
 
             }
 
-    /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-    transform-style: preserve-3d;
+/*     Do an horizontal flip when you move the mouse over the flip box container */
+ /* added :active for mobile devices*/   
+/* .flip-card:hover .flip-card-inner, .flip-card:active .flip-card-inner {  
+ 
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  transition: all 0.7s ease-in-out;
+ } */
+
+  /* TUTAJ DODAC MEDIAQUERY max 720px klasa card-clicked */
+ 
+
+         
+    
+    .tile-clicked .flip-card-inner {
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
         transition: all 0.7s ease-in-out;
+    }
+  
+  @media only screen and (min-width: 1025px) {
+         
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+        transition: all 0.7s ease-in-out;
+    }
   }
+
+
+
+
+
 
   /* Position the front and back side */
 .flip-card-front, .flip-card-back {
@@ -268,12 +324,14 @@ html {
 
   /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-    background-color: rgba(0,0,0,0.2);
+    /* background-color: rgba(0,0,0,0.2); */
+    /* background: rgb(204,158,0, 0.6); */
+    background: #e0b001;
     border-radius: 10px;
     padding: 20px 4px;
     color: black;
     /* border: 1px solid red; */
-
+    border: 6px solid rgb(204,158,0, 0.4);
   }
 
   .percent {
@@ -393,7 +451,7 @@ html {
 }
 
 .beer__tagline {
-  font-weight: 510;
+  font-weight: bold;
   font-style: italic;
 
 }

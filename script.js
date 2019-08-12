@@ -145,13 +145,19 @@ function showMatchingBeers(e) {
                 // console.log(html);
                 // suggestions.innerHTML = html;
                 // console.log(match);
+                const tiles = document.querySelectorAll('.tile');
+                console.log(tiles);
+                tiles.forEach(tile => tile.addEventListener('click', () => {tile.classList.toggle('tile-clicked')}));
 
             });
         }
             const searchInput = document.querySelector('.search');
             const suggestions = document.querySelector('.suggestions');
+            
             searchInput.addEventListener('change', displayMatches);
             searchInput.addEventListener('keyup', displayMatches);
+
+            // tiles.forEach(tile => tile.addEventListener('click', () => {this.classList.add('tile-clicked')}));
             // suggestions.addEventListener('click', showMatchingBeers);
     });
     
