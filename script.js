@@ -2,7 +2,12 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
 
 
     $.getJSON(endpoint, function(data) {
-        console.log(data);
+        // console.log(data);
+
+        function addPaginationButtons() {
+            // document.querySelector(".wrapper").append();
+            $(".tiles-wrapper").append(`<div class="buttons">ssssssssssss</div>`);
+        }
 
         function displayTiles(beers) {
             // build html with filted data
@@ -74,13 +79,13 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
                                     </div>
                         </div>
                     </div>
-               </div>
-                    `
+               </div>                    `
             });
         
                 
                 $(".tiles").append(beerHtml);
                 // hopsList = document.querySelector('.suggestions');
+                
             }
         
         function displaySearchList(beers) {
@@ -135,31 +140,46 @@ function showMatchingBeers(e) {
         
         
 
-
+    let perPage = '24';
 
         function displayMatches() {
             const food = searchInput.value ;
-            $.getJSON(endpoint+"food="+food +'&per_page=25' , function(matchingBeers) {
+            $.getJSON(endpoint+"food="+food +'&per_page='+ perPage , function(matchingBeers) {
+                console.log(matchingBeers);
                 displayTiles(matchingBeers);
+                
                 // !! displaySearchList(matchingBeers);
                 // console.log(html);
                 // suggestions.innerHTML = html;
                 // console.log(match);
                 const tiles = document.querySelectorAll('.tile');
-                console.log(tiles);
+                // console.log(tiles);
                 tiles.forEach(tile => tile.addEventListener('click', () => {tile.classList.toggle('tile-clicked')}));
 
             });
         }
+
+       
+
+
+
             const searchInput = document.querySelector('.search');
             const suggestions = document.querySelector('.suggestions');
             
             searchInput.addEventListener('change', displayMatches);
             searchInput.addEventListener('keyup', displayMatches);
+            // searchInput.addEventListener('change', addPaginationButtons);
+            // searchInput.addEventListener('keyup', addPaginationButtons);
+
+            addPaginationButtons();
+            
 
             // tiles.forEach(tile => tile.addEventListener('click', () => {this.classList.add('tile-clicked')}));
             // suggestions.addEventListener('click', showMatchingBeers);
     });
     
-
+    
+    
+   
+    
     
