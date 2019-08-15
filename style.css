@@ -1,11 +1,23 @@
+
+
+
 /* some basic styling */
 html {
     box-sizing: border-box;
-    /* background: #ffc600; */
-    font-family: 'helvetica neue';
+    background: #ffc600;
+    font-family: monospace;
     font-size: 20px;
     font-weight: 200;
+    background: url("img-noise-361x370.png");
+    /* background-color: #DFDBE5; */
+    background-color: #ffc600;
+    background-color: #2e000f;
+    /* background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png"); */
+    background: url("Melamine-wood-002.png");
+    /* background: url("wood-texture-2000x1333.jpg") */
   }
+
+  
 
   *, *:before, *:after {
     box-sizing: inherit;
@@ -15,17 +27,21 @@ html {
   input {
     width: 100%;
     padding: 20px;
+    font-family: monospace;
   }
   
   .search-form {
-    max-width: 400px;
-    margin: 50px auto;
+    /* width: 450px; */
+    max-width: 450px;
+    margin: 30px auto;
     /* I change the position of the search form so it overlaps tiles with beers */
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0; 
+    transition: 0.3s;
+    /* z-index: 1; */
     /* zoom */
   }
   
@@ -49,6 +65,7 @@ html {
     padding: 0;
     position: relative;
     /*perspective: 20px;*/
+    z-index: 1;
   }
   
   .suggestions li {
@@ -73,6 +90,14 @@ html {
     transform: perspective(100px) rotateX(-3deg) translateY(3px);
     background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
   }
+
+  /* .suggestions li:nth-child(even):hover {
+    background: linear-gradient(to top,  #ffffff 0%,rgb(177, 175, 175) 100%);
+  }
+  
+  .suggestions li:nth-child(odd):hover {
+    background: linear-gradient(to top,  #ffffff 0%,rgb(182, 182, 182) 100%);
+  } */
   
   span.population {
     font-size: 15px;
@@ -86,48 +111,388 @@ html {
 
 .wrapper {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: auto;
+    text-align: center;
+    /* border: 5px solid green; */
+   
     
 }
 
 .tiles {
-  position: absolute;
-  left: 0;
+    position: absolute;
+    left: 0;
     right: 0;
     top: 0;
     bottom: 0; 
-  border: 3px solid blue;
-  max-width: 1600px;
-    min-height: 95vh;
+    max-width: 1600px;
+    /* min-height: 1600px; */
+    min-height: calc(100% - 50px);
     margin: 50px auto;
-    display: flex;
-    padding: 150px;
-    flex-wrap: wrap;
+    /* margin-top: 70px; */
+    /* display: flex; */
+    /* grid template */
+    display: grid;
+    justify-items: center;
+    /* justify-content: space-evenly; */
+    justify-content: center;
+    /* add minmax so the zooming works corettly */
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(314px, 1fr));
+    grid-template-rows: repeat(4, 550px); 
+    grid-auto-rows: 550px;
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+
+    /* end of grid */
+    padding: 120px;
+    padding-top: 150px;
+    /* flex-wrap: wrap;
     justify-content: flex-start;
-    justify-content: flex-start;
+    justify-content: flex-start; */
     align-items: center;
+    /* justify-content: space-between; */
+    /* border: 1px solid red; */
+    
 }
+
+ /* media queries so it looks a bit better on mobile devices */
+@media only screen and (max-width: 920px) {
+  .tiles {
+    padding: 100px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .tiles {
+    padding: 40px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .tiles{
+    margin-top: 10px;
+    padding-top: 90px;
+    grid-template-columns: 1fr 1fr;
+    /* overflow-y: auto; */
+  }
+  .search-form{
+    margin-top: 0px;
+  }
+  input {
+    /* transform: scaleY(0.8); */
+    padding: 5px;
+  }
+  .suggestions li {
+    padding: 14px;
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 596px) {
+  .search-form {
+    max-width: 350px;
+  }
+  .tiles {
+    padding: 40px;
+    padding-top: 150px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .search-form {
+    max-width: 280px;
+  }
+  .suggestions li {
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .search-form {
+    /* transform: scale(0.8); */
+    max-width: 250px;
+  }
+  .suggestions li {
+    padding-bottom: 10px;
+
+  }
+
+}
+
+@media only screen and (max-width: 550px) {
+  .tiles{
+    grid-template-columns: minmax(300px, 1fr);
+    padding-top: 120px;
+  }
+}
+@media only screen and (min-width: 1050px) {
+  .search-form{
+    /* position: fixed; */
+  }
+}
+
 
 .tile {
-    flex: 1 1 33.33%;
-    min-width: 250px;
-    max-width: 33.33%;
+    /* background: rgba(0, 0, 0, 0.19); */
+    /* flex: 1 1 33.33%; */
+    /* min-width: 250px; */
+    /* max-width: 33.33%; */
+    width: 100%;
+    height: 100%;
     /* padding-top: 40%; */
     /* min-height: 200px; */
-    border: 2px solid purple;
+    border-radius: 10px;
+    /* border-radius: 50px; */
+    padding: 5px;
+
 }
 
-@media only screen and (max-width: 300px) {
+/* @media only screen and (max-width: 300px) {
     .tile {
         min-width: 50%;
     }
-  }
+  } */
 
   .beer-img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+    
+  }
+
+  .beer-img-container {
+      max-width: 100%;
+  overflow: hidden;
+      height: 60%;
+      margin: auto;
+  }
+
+  /* flip card effect */
+  /* .flip-card-front {
+    min-width: 250px;
     width: 100%;
     height: 100%;
+    
+    } */
+
+
+    .flip-card {
+        min-width: 250px;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        
+        perspective: 1000px; /* Remove this if you don't want the 3D effect */
+        
+    }
+    .flip-card-inner {
+        /* min-width: 250px;
+        width: 100%;
+        height: 100%; */
+
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+            }
+
+/*     Do an horizontal flip when you move the mouse over the flip box container */
+ /* added :active for mobile devices*/   
+/* .flip-card:hover .flip-card-inner, .flip-card:active .flip-card-inner {  
+ 
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  transition: all 0.7s ease-in-out;
+ } */
+
+  /* TUTAJ DODAC MEDIAQUERY max 720px klasa card-clicked */
+ 
+
+         
+    
+    .tile-clicked .flip-card-inner {
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+        transition: all 0.7s ease-in-out;
+    }
+  
+  @media only screen and (min-width: 1025px) {
+         
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+        transition: all 0.7s ease-in-out;
+    }
   }
+
+
+
+
+
+
+  /* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    /* background-color: rgba(0,0,0,0.2); */
+    /* background: rgb(204,158,0, 0.6); */
+    background: #e0b001;
+    border-radius: 10px;
+    padding: 20px 4px;
+    color: black;
+    /* border: 1px solid red; */
+    border: 6px solid rgb(204,158,0, 0.4);
+  }
+
+  .percent {
+    position: absolute;
+
+    max-height: 100px;
+    /* height: auto; */
+    /* height: 100px; */
+    max-width: 100px;
+    width: 100px;
+    height: 100px;
+    /* width: auto; */
+    display: block;
+    font-size: 24px;
+    /* line-height: 46px; */
+    /* z-index: 1; */
+    top: 90px;
+    right: 24px;
+    /* border: 1px solid green; */
+    background: white;
+    border-radius: 100px;
+    /* align-items: center; */
+    padding: 10px;
+    padding-top: 16px;
+  }
+  .percent p {
+    margin: 0;
+    /* display: inline; */
+    backface-visibility: hidden;
+    transform: rotate(-10deg); 
+    text-align: center;
+    /* display: inline-block; */
+    /* border: 1px solid purple; */
+  }
+  .percent p {
+    font-weight: 900;
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    background-color: rgb(204,158,0);
+    color: white;
+    transform: rotateY(180deg);
+    text-align: left;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 4px;
+    padding-bottom: 0px;
+    overflow-y: auto;
+  }
+
+  .flip-card-back p, h3
+{
+    display:inline;
+}
+
+.flip-card-back h3
+{
+  text-align: center;
+    font-size: 25px;
+}
+.flip-card-back h1
+{
+    text-align: center;
+}
+.flip-card-back h2
+{
+    margin-right: 0;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.flip-card-front h2
+{
+  font-family: 'Bungee Inline', arial;
+  line-height: 1;
+  font-size: 22px;
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+}
+  /* end of flip card effect */
+
+
+
+  /* h2, h3 {
+    display: inline;
+} */
+
+.listItemClicked {
+  color: red;
+}
+
+.food-pairing {
+  /* border: 1px solid rgba(0, 0, 0, 0.4);; */
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  margin-top: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  padding: 10px 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+}
+.food-pairing ul{
+  text-align: left;
+  margin-top: 10px;
+  padding-left: 30px;
+  /* padding-bottom: 0px; */
+
+}
+.food-pairing li{
+  text-align: left;
+  margin-top: 5px;
+}
+.food-pairing h2{
+  margin-top: 8px;
+}
+
+.beer__tagline {
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+.strong-beer {
+  color: red;
+}
+.very-strong-beer {
+  color: red;
+  font-size: 35px;
+}
+
+.tiles{
+
+  /* border: 4px solid red; */
+  border-bottom: 10px solid transparent;
+  /* height: 100%;
+  margin: 0; */
+}
+
+
+
+
+
