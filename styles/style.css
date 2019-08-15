@@ -16,6 +16,7 @@ html {
 	box-sizing: inherit;
 }
 
+/* search-form */
 input {
 	width: 100%;
 	padding: 20px;
@@ -78,10 +79,7 @@ input.search {
 	transform: perspective(100px) rotateX(-3deg) translateY(3px);
 	background: linear-gradient(to top, #ffffff 0%, #EFEFEF 100%);
 }
-
-span.population {
-	font-size: 15px;
-}
+/* end of search-form */
 
 .hl {
 	background: #ffc600;
@@ -180,6 +178,7 @@ span.population {
 	}
 }
 
+/* grid item */
 .tile {
 	width: 98%;
 	height: 98%;
@@ -297,7 +296,6 @@ span.population {
 	color: red;
 	font-size: 35px;
 }
-
 
 /* card-back styling */
 .flip-card-back {
