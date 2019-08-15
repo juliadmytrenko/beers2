@@ -33,7 +33,7 @@ function displayTiles(beers) {
                         <div class="flip-card-front data-simplebar">
                             <h2 class="beer-name">${beer.name}</h2>
                             <div class="beer-img-container">
-                                <img class="beer-img" src = "${beer.image_url}" onerror="this.onerror=null; this.src='../images/not-found.png'">
+                                <img class="beer-img" src = "${beer.image_url}" onerror="this.onerror=null; this.src='images/not-found.png'">
                             </div>
                             <div class="percent"><p>abv: </p><p>${beerAbv}<i class="fa fa-percent"></i></p></div>
                         
