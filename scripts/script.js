@@ -64,7 +64,7 @@ function displayTiles(beers) {
     
 function displayMatches() {
     const food = searchInput.value;
-    $.getJSON(endpoint + "food=" + food + '&per_page=38' + '&page=1', function(matchingBeers) {
+    $.getJSON(endpoint + "food=" + food + '&per_page=24' + '&page=1', function(matchingBeers) {
         displayTiles(matchingBeers);
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach(tile => tile.addEventListener('click', () => { tile.classList.toggle('tile-clicked') }));  
