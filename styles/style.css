@@ -1,0 +1,363 @@
+html {
+	box-sizing: border-box;
+	background: #ffc600;
+	font-family: monospace;
+	font-size: 20px;
+	font-weight: 200;
+	background: url("../images/img-noise-361x370.png");
+	background-color: #ffc600;
+	background-color: #2e000f;
+	background: url("../images/Melamine-wood-002.png");
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+input {
+	width: 100%;
+	padding: 20px;
+	font-family: monospace;
+}
+
+.search-form {
+	max-width: 450px;
+	margin: 30px auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	transition: 0.3s;
+}
+
+input.search {
+	margin: 0;
+	text-align: center;
+	outline: 0;
+	border: 10px solid #F7F7F7;
+	width: 120%;
+	left: -10%;
+	position: relative;
+	top: 10px;
+	z-index: 2;
+	border-radius: 5px;
+	font-size: 40px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+
+.suggestions {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	/*perspective: 20px;*/
+	z-index: 1;
+}
+
+.suggestions li {
+	background: white;
+	list-style: none;
+	border-bottom: 1px solid #D8D8D8;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+	margin: 0;
+	padding: 20px;
+	transition: background 0.2s;
+	display: flex;
+	justify-content: space-between;
+	text-transform: capitalize;
+}
+
+.suggestions li:nth-child(even) {
+	transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+	background: linear-gradient(to bottom, #ffffff 0%, #EFEFEF 100%);
+}
+
+.suggestions li:nth-child(odd) {
+	transform: perspective(100px) rotateX(-3deg) translateY(3px);
+	background: linear-gradient(to top, #ffffff 0%, #EFEFEF 100%);
+}
+
+span.population {
+	font-size: 15px;
+}
+
+.hl {
+	background: #ffc600;
+}
+
+/* grid container */
+.tiles {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 2000px;
+	min-height: 96vh;
+	margin: 50px auto;
+	display: grid;
+	justify-items: center;
+	justify-content: center;
+	grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+	grid-template-rows: repeat(4, 550px);
+	grid-auto-rows: 550px;
+	grid-column-gap: 10px;
+	grid-row-gap: 15px;
+	padding: 120px;
+	padding-top: 150px;
+	align-items: center;
+}
+
+@media only screen and (max-width: 940px) {
+	.tiles {
+		padding: 80px;
+		padding-top: 150px;
+	}
+}
+
+@media only screen and (max-width: 860px) {
+	.tiles {
+		padding: 30px;
+		padding-top: 156px;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+	.tiles {
+		margin-top: 10px;
+		padding-top: 120px;
+		grid-template-columns: 1fr 1fr;
+	}
+	.search-form {
+		margin-top: 0px;
+	}
+	input {
+		/* transform: scaleY(0.8); */
+		padding: 5px;
+	}
+	.suggestions li {
+		padding: 14px;
+		padding-bottom: 10px;
+	}
+}
+
+@media only screen and (max-width: 596px) {
+	.search-form {
+		max-width: 350px;
+	}
+	.tiles {
+		padding: 40px;
+		padding-top: 120px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.tiles {
+		grid-template-columns: minmax(300px, 1fr);
+		padding-top: 120px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.search-form {
+		max-width: 280px;
+	}
+	.suggestions li {
+		padding-bottom: 10px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.search-form {
+		/* transform: scale(0.8); */
+		max-width: 250px;
+	}
+	.suggestions li {
+		padding-bottom: 10px;
+	}
+}
+
+.tile {
+	width: 98%;
+	height: 98%;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.flip-card {
+	min-width: 250px;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	perspective: 1000px;	/* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+
+.tile-clicked .flip-card-inner {
+	transform: rotateY(180deg);
+	transform-style: preserve-3d;
+	transition: all 0.7s ease-in-out;
+}
+
+@media only screen and (min-width: 1025px) {
+	.flip-card:hover .flip-card-inner {
+		transform: rotateY(180deg);
+		transform-style: preserve-3d;
+		transition: all 0.7s ease-in-out;
+	}
+}
+
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+/* card-front styling */
+.flip-card-front {
+	background: #e0b001;
+	border-radius: 10px;
+	padding: 20px 4px;
+	color: black;
+	border: 6px solid rgb(204, 158, 0, 0.4);
+	overflow-y: auto;
+}
+
+.beer-img-container {
+	max-width: 100%;
+	overflow: hidden;
+	height: 60%;
+	margin: auto;
+}
+
+.beer-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.percent {
+	position: absolute;
+	max-height: 100px;
+	max-width: 100px;
+	width: 100px;
+	height: 100px;
+	display: block;
+	font-size: 24px;
+	top: 90px;
+	right: 24px;
+	background: white;
+	border-radius: 100px;
+	padding: 10px;
+	padding-top: 16px;
+}
+
+.percent p {
+	margin: 0;
+	backface-visibility: hidden;
+	transform: rotate(-10deg);
+  text-align: center;
+  font-weight: 900;
+}
+
+.flip-card-front h2 {
+	font-family: 'Bungee Inline', arial;
+	line-height: 1;
+	font-size: 22px;
+	font-size: 20px;
+	margin: 10px;
+	text-align: center;
+}
+
+.beer__tagline {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.strong-beer {
+	color: red;
+}
+
+.very-strong-beer {
+	color: red;
+	font-size: 35px;
+}
+
+
+/* card-back styling */
+.flip-card-back {
+	background-color: rgb(204, 158, 0);
+	color: white;
+	transform: rotateY(180deg);
+	text-align: left;
+	border-radius: 10px;
+	padding: 20px;
+	padding-top: 4px;
+	padding-bottom: 0px;
+	overflow-y: auto;
+}
+
+.flip-card-back p,
+h3 {
+	display: inline;
+}
+
+.flip-card-back h1 {
+	text-align: center;
+}
+
+.flip-card-back h2 {
+	margin-right: 0;
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+.flip-card-back h3 {
+	text-align: center;
+	font-size: 25px;
+}
+
+.food-pairing {
+	/* border: 1px solid rgba(0, 0, 0, 0.4);; */
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.12);
+	margin-top: 24px;
+	margin-bottom: 16px;
+	text-align: center;
+	padding: 10px 4px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+}
+
+.food-pairing ul {
+	text-align: left;
+	margin-top: 10px;
+	padding-left: 30px;
+}
+
+.food-pairing li {
+	text-align: left;
+	margin-top: 5px;
+}
+
+.food-pairing h2 {
+	margin-top: 8px;
+}
+
+
+
