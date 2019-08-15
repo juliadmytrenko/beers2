@@ -232,7 +232,6 @@ input.search {
 	padding: 20px 4px;
 	color: black;
 	border: 6px solid rgb(204, 158, 0, 0.4);
-	overflow-y: auto;
 }
 
 .beer-img-container {
