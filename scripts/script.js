@@ -4,28 +4,22 @@ const endpoint = 'https://api.punkapi.com/v2/beers?';
 function displayTiles(beers) {
     $(".tiles").html("");
     let beerHtml = beers.map(beer => {
-        let hopsTable = [];
-        let malts = [];
-        beer.ingredients.hops.forEach(obj => {
-            hopsTable.push(obj.name);
-        });
-        const uniqHops = [...new Set(hopsTable)];
-    
-        beer.ingredients.malt.forEach(obj => {
-            malts.push(obj.name);
-        });
+        const hops = beer.ingredients.hops.map(obj => obj.name);
+        const uniqHops = [...new Set(hops)];
+        const malts = beer.ingredients.malt.map(obj => obj.name);
+
         const foodPairings = beer.food_pairing.map(dish => {
             return `<li>${dish}</li>`;
         }).join("");
         
         let beerAbv = beer.abv;
-        if (beer.abv >= 7.5) {
-            beerAbv = `<span class="strong-beer">${beer.abv}</span>`;
-        }
         if (beer.abv >= 20) {
             beerAbv = `<span class="very-strong-beer">${beer.abv}</span>`;
         }
-                    
+        if (beer.abv >= 7.5) {
+            beerAbv = `<span class="strong-beer">${beer.abv}</span>`;
+        }
+
         return `
             <div class = 'tile'>
                 <div class="flip-card">
@@ -56,7 +50,8 @@ function displayTiles(beers) {
                         </div>
                     </div>
                 </div>
-            </div>                    `
+            </div>                    
+         `;
     });
     
     $(".tiles").append(beerHtml);
